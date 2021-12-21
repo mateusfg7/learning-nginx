@@ -6,3 +6,9 @@ services:
     container_name: nginx
     ports:
       - "8000:80"
+
+  node-server:
+    build: node-server/
+    container_name: node-server
+    ports:
+      - "3000:3000"
