@@ -1,10 +1,13 @@
 // simple express server with one route
 
+import path from 'path'
 import express from 'express';
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('NODE SERVER!');
+  res.sendFile(path.resolve('./index.html'));
 });
 
-app.listen(process.env.PORT ?? 3000);
+app.listen(3000, () => {
+  console.log(`Node server is running!`);
+});
