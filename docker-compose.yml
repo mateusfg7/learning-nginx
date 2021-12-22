@@ -1,9 +1,21 @@
 version: '3'
 
 services:
-  nginx:
+  nginx-gateway:
     image: nginx:1.17.6-alpine
-    container_name: nginx
+    container_name: nginx-gateway
+    ports:
+      - "80:80"
+    volumes:
+      - /home/mateusfg7/www/learning-nginx/nginx-gateway/config/:/etc/nginx/conf.d/
+      - /home/mateusfg7/www/learning-nginx/nginx-gateway/html/:/usr/share/nginx/html/
+    depends_on:
+      - node-server
+      - nginx-server
+
+  nginx-server:
+    image: nginx:1.17.6-alpine
+    container_name: nginx-server
     ports:
       - "8000:80"
 
